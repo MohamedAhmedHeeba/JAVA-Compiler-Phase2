@@ -1,0 +1,44 @@
+# depslib dependency file v1.0
+1492691923 source:/home/mohamed/Desktop/Shell project/Phase2/main.cpp
+	<iostream>
+	"Parser_Engine.h"
+
+1492690878 /home/mohamed/Desktop/Shell project/Phase2/include/Parser_Engine.h
+	<string>
+	<vector>
+	<map>
+	<set>
+
+1492691343 source:/home/mohamed/Desktop/Shell project/Phase2/src/CFG.cpp
+	"CFG.h"
+
+1492691940 /home/mohamed/Desktop/Shell project/Phase2/include/CFG.h
+	<string>
+	<vector>
+	<map>
+	<set>
+	"Rule.h"
+
+1492690431 /home/mohamed/Desktop/Shell project/Phase2/include/Rule.h
+	<string>
+	<vector>
+	<map>
+	<set>
+
+1492690804 source:/home/mohamed/Desktop/Shell project/Phase2/src/CFG_Reader.cpp
+	"CFG_Reader.h"
+
+1492690872 /home/mohamed/Desktop/Shell project/Phase2/include/CFG_Reader.h
+	<string>
+	<vector>
+	<map>
+	<set>
+
+1492691995 source:/home/mohamed/Desktop/Shell project/Phase2/src/Parser_Engine.cpp
+	"Parser_Engine.h"
+	"CFG_Reader.h"
+	"CFG.h"
+
+1492692084 source:/home/mohamed/Desktop/Shell project/Phase2/src/Rule.cpp
+	"Rule.h"
+
