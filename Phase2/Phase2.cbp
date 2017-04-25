@@ -32,6 +32,14 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="CFG.cpp" />
+		<Unit filename="CFG.h" />
+		<Unit filename="CFG_Reader.cpp" />
+		<Unit filename="CFG_Reader.h" />
+		<Unit filename="Parser_Engine.cpp" />
+		<Unit filename="Parser_Engine.h" />
+		<Unit filename="Rule.cpp" />
+		<Unit filename="Rule.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />
