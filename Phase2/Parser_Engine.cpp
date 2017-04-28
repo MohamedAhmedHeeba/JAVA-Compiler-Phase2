@@ -124,8 +124,8 @@ void Parser_Engine:: LL_Derivation(string start)
             }
             else if (CFG::CFG_map[top]->has_epson())  ///if this rule has @
             {
-                cout << "Has @ " << top << endl;
-                this->output.push_back(top+"-> @");
+                cout << "Has EPS " << top << endl;
+                this->output.push_back(top+"-> EPS");
             }
             else
             {

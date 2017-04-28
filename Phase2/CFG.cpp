@@ -3,6 +3,8 @@
 #include <sstream>
 #include <cstring>
 #include <iostream>
+#include<bits/stdc++.h>
+
 
 CFG::CFG()
 {
@@ -72,7 +74,7 @@ void CFG::build_parsing_table(vector<Rule *> rules){
                 }
                 else if (*itr == "\\L")
                 {
-                    temp.insert("@");
+                    temp.insert("\\L");
                 }
                 firstS.insert(std::pair< string, set < string > >(*itr, temp));
             }
@@ -165,7 +167,7 @@ void CFG::build_parsing_table(vector<Rule *> rules){
                     }else{
                         ///ERROR NOT LL(1)
                     }
-                }else if(this->trim(SYM) == "@"){
+                }else if(this->trim(SYM) == "\\L"){
                     R->set_has_epson(true);
                     //cout << "\nHHHHHHHHFFFFFFFFFFF\n" << R->get_name() << R->has_epson() << "\nHHHHHFFFFFFFFFFFFFF\n";
                     map<string, set<string>> follows = R->getTokensFollows();
@@ -203,20 +205,26 @@ void CFG::build_parsing_table(vector<Rule *> rules){
             }
         }
     }
-    //print_pasring_table();
+    print_pasring_table();
 }
 
 void CFG::print_pasring_table(){
-     cout << "PARSING TABLE"<< "\n";
-     for(auto const &ent : parsing_table){
+
+    std::ofstream out("TABLE.txt");
+    out << "PARSING TABLE"<< "\n";
+    for(auto const &ent : parsing_table){
         string name = ent.first;
+        out << name << "\n";
+        out << "====================================\n";
         map<string, string> rule = ent.second;
         for(auto const &ent2 : rule){
             string nonterminal = ent2.first;
             string entry = ent2.second;
-            cout << "terminal " << name << " --> non-terminal " << nonterminal << " product ( " << entry << " ) \n";
+            if(entry == "\\L"){entry = "EPS";}
+            out << nonterminal << " : " << entry << "\n";
         }
-     }
+        out << "====================================\n\n";
+    }
 }
 
 bool CFG::is_teminal(string s){
