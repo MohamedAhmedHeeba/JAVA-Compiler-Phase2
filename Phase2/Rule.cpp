@@ -3,7 +3,7 @@
 Rule::Rule()
 {
     //ctor
-    this->has_epson = false;
+    this->epson = false;
 }
 
 Rule::~Rule()
@@ -52,9 +52,30 @@ map<string,set<string>> Rule::get_follows(){
 }
 
 void Rule::set_has_epson(bool b){
-    this->has_epson = b;
+    this->epson = b;
 }
 
 bool Rule::has_epson(){
-    return this->has_epson;
+    return this->epson;
 }
+
+map<string, set<string>> Rule::getTokensFirsts(){
+    return this->tokensFirsts;
+}
+
+void Rule::setTokensFirsts(map<string, set<string>> tokensFirsts) {
+    this->tokensFirsts = tokensFirsts;
+}
+
+map<string, set<string>> Rule::getTokensFollows(){
+    return this->tokensFollows;
+}
+
+void Rule::setTokensFollows(map<string, set<string>> tokensFollows) {
+    this->tokensFollows = tokensFollows;
+}
+
+void Rule::set_derived_strings(set<string> derived_strings) {
+    this->derived_strings = derived_strings;
+}
+

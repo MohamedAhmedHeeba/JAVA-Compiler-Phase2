@@ -36,6 +36,8 @@
 		<Unit filename="CFG.h" />
 		<Unit filename="CFG_Reader.cpp" />
 		<Unit filename="CFG_Reader.h" />
+		<Unit filename="Left_Handling.cpp" />
+		<Unit filename="Left_Handling.h" />
 		<Unit filename="Parser_Engine.cpp" />
 		<Unit filename="Parser_Engine.h" />
 		<Unit filename="Rule.cpp" />

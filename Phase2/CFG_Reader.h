@@ -5,6 +5,7 @@
 #include <vector>
 #include <map>
 #include <set>
+#include "Rule.h"
 
 using namespace std;
 
@@ -18,11 +19,13 @@ class CFG_Reader
         void parseFile();
         void buildRule(string &line);
         string get_start();
+        vector<Rule *> getRules();
 
     protected:
 
     private:
-    string start = "";
+        string start = "";
+        vector<Rule *> rules;
 };
 
 #endif // CFG_READER_H

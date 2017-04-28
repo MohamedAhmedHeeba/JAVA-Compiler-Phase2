@@ -42,27 +42,31 @@
 1492692084 source:/home/mohamed/Desktop/Shell project/Phase2/src/Rule.cpp
 	"Rule.h"
 
-1493041853 /home/mohamed/Desktop/Shell project/Phase2/Parser_Engine.h
+1493044951 /home/mohamed/Desktop/Shell project/Phase2/Parser_Engine.h
 	<string>
 	<vector>
 	<map>
 	<set>
 	<stack>
 
-1493039103 source:/home/mohamed/Desktop/Shell project/Phase2/Parser_Engine.cpp
+1493385457 source:/home/mohamed/Desktop/Shell project/Phase2/Parser_Engine.cpp
 	"Parser_Engine.h"
 	"CFG_Reader.h"
 	"CFG.h"
 	"Rule.h"
 	<bits/stdc++.h>
+	<string>
+	<sstream>
+	"Left_Handling.h"
 
-1493038960 /home/mohamed/Desktop/Shell project/Phase2/CFG_Reader.h
+1493316496 /home/mohamed/Desktop/Shell project/Phase2/CFG_Reader.h
 	<string>
 	<vector>
 	<map>
 	<set>
+	"Rule.h"
 
-1492903712 /home/mohamed/Desktop/Shell project/Phase2/CFG.h
+1493379960 /home/mohamed/Desktop/Shell project/Phase2/CFG.h
 	<string>
 	<vector>
 	<map>
@@ -71,21 +75,32 @@
 	<iostream>
 	<string>
 
-1492875121 /home/mohamed/Desktop/Shell project/Phase2/Rule.h
+1493322048 /home/mohamed/Desktop/Shell project/Phase2/Rule.h
 	<string>
 	<vector>
 	<map>
 	<set>
 
-1492875142 source:/home/mohamed/Desktop/Shell project/Phase2/Rule.cpp
+1493316740 source:/home/mohamed/Desktop/Shell project/Phase2/Rule.cpp
 	"Rule.h"
 
-1492905373 source:/home/mohamed/Desktop/Shell project/Phase2/CFG.cpp
+1493383659 source:/home/mohamed/Desktop/Shell project/Phase2/CFG.cpp
 	"CFG.h"
+	<sstream>
+	<cstring>
+	<iostream>
 
-1493039039 source:/home/mohamed/Desktop/Shell project/Phase2/CFG_Reader.cpp
+1493383452 source:/home/mohamed/Desktop/Shell project/Phase2/CFG_Reader.cpp
 	"CFG_Reader.h"
 	"Rule.h"
 	"CFG.h"
 	<bits/stdc++.h>
+
+1493322775 source:/home/mohamed/Desktop/Shell project/Phase2/Left_Handling.cpp
+	"Left_Handling.h"
+	"CFG.h"
+
+1493181576 /home/mohamed/Desktop/Shell project/Phase2/Left_Handling.h
+	"bits/stdc++.h"
+	"Rule.h"
 

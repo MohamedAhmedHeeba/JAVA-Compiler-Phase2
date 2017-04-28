@@ -5,6 +5,7 @@
 #include <bits/stdc++.h>
 #include <string>
 #include <sstream>
+#include "Left_Handling.h"
 
 using namespace std;
 
@@ -54,35 +55,38 @@ void Parser_Engine:: LL_Derivation(string start)
     drive_stack.push(start);
     int index = 0;
 
-    while (drive_stack.top() != "$" && index < drive_stack.size())
+    while (drive_stack.top() != "$" && index < tokens.size())
     {
         string top = drive_stack.top();
+
         ///if terminal
         top = trim(top);
         if (is_teminal(top))
         {
-            if (top.substr(1, top.size() - 1) == tokens[index])
+
+            if (top.substr(1, top.size() - 2) == tokens[index])
             {
                 index++;
             }
             else
             {
                 /// error
-                cout << "error : stack content = "  << top << "input symbo = " << tokens[index] << endl;
+                cout << "error111 : stack content = "  << top << "input symbo = " << tokens[index] << endl;
             }
             drive_stack.pop();
         }
         else
         {
             ///non terminal
-            string entry = parsing_table[top][tokens[index]];           /// MAY ERROR
+            string x = tokens[index];
+            string entry = CFG::parsing_table[top]['\''+x+'\''];           /// MAY ERROR
             if(entry.empty()) /// empty cell
             {
                 ///ERORR
-                cout << "error : stack content = "  << top << "input symbo = " << tokens[index] << endl;
+                cout << "error222 : stack content = "  << top << "input symbo = " << tokens[index] << endl;
                 index++;
             }
-            else if(entry == "@")
+            else if(entry == "\\L")
             {
                 drive_stack.pop();
                 this->output.push_back(top+"->"+entry);
@@ -90,7 +94,7 @@ void Parser_Engine:: LL_Derivation(string start)
             else if (entry == "synch")               ///adding synch
             {
                 ///Error
-                cout << "error Synch : stack content = "  << top << "input symbo = " << tokens[index] << endl;
+                cout << "error333 Synch : stack content = "  << top << "input symbo = " << tokens[index] << endl;
                 drive_stack.pop();
             }
             else
@@ -105,14 +109,14 @@ void Parser_Engine:: LL_Derivation(string start)
     {
         while(index < tokens.size())
         {
-            cout << "empty stack Discarded = " << tokens[index++] << endl();
+            cout << "empty stack Discarded = " << tokens[index++] << endl;
         }
     }
     else if(index == tokens.size())
     {
         while(drive_stack.top() != "$")
         {
-            top = drive_stack.top();
+            string top = drive_stack.top();
             top = trim(top);
             if (is_teminal(top))
             {
@@ -121,12 +125,14 @@ void Parser_Engine:: LL_Derivation(string start)
             else if (CFG::CFG_map[top]->has_epson())  ///if this rule has @
             {
                 cout << "Has @ " << top << endl;
+                this->output.push_back(top+"-> @");
             }
             else
             {
                 cout << "stack is not empty and non terminal symbol 'Discarded' = " << top << endl;
             }
             drive_stack.pop();
+
         }
     }
 }
@@ -148,27 +154,34 @@ void Parser_Engine::run()
     ///read CFG file
     CFG_Reader * reader = new CFG_Reader();
     reader->run();
+    vector<Rule* > rules = reader->getRules();
+
 
     /*
     for(map <string, Rule *> :: iterator it = CFG::CFG_map.begin(); it != CFG::CFG_map.end(); ++it)
     {
-        cout << (it -> second) -> get_rule() << endl;
-        cout << it -> first << endl;
+        //cout << (it -> second) -> get_rule() << endl;
+        cout << "AAAAAAAAAAAAAAAA  " <<it -> first << endl;
         set<string> s = (it -> second) -> get_derived_strings();
         for (set<string>::iterator itr = s.begin(); itr != s.end(); itr++){
-            cout << *itr << "--\n";
+            cout << "BBBBBBBBBBB   "<<*itr << "--\n";
         }
         cout << "--------------------------------------------------------\n\n";
-    }*/
+    }
+    */
 
-    this->fill_tokens();
-    this ->LL_Derivation(reader -> get_start());
-    this -> print_output();
+
+    //Left_Handling * lh = new Left_Handling();
+    //vector<Rule* > rules = lh->leftRecursion(reader->getRules());
 
     ///build the parsign table
     CFG * cfg = new CFG();
-    //cfg->build_parsing_table();
+    cfg->build_parsing_table(rules);
+
     ///start part 2
+    this->fill_tokens();
+    this ->LL_Derivation(reader->get_start());
+    this -> print_output();
 
 }
 

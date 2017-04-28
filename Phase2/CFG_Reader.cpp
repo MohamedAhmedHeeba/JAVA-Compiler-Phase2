@@ -140,12 +140,17 @@ void CFG_Reader:: buildRule(string &line)
     {
         rule -> add_to_derived_strings(split);
     }
+
+
     CFG::CFG_map.insert(std::pair< string, Rule * >(non_terminal, rule));
+    rule->set_name(non_terminal);
+    rules.push_back(rule);
+    if(start.empty()){start = non_terminal;}
     /*return non_terminal start?*/
-    if (this -> start == "")
-    {
-        start = non_terminal;
-    }
     return;
+}
+
+vector<Rule *> CFG_Reader::getRules() {
+    return rules;
 }
 
